@@ -10,11 +10,10 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.downvote %></td>
-        <td><button id="downvote">&#8249;</button></td>
+        <td><button class="downvote" data-id=<%="#{post.id}"%>>&#8249;</button></td>
         <td><%= post.contents %></td>
-        <td><button id="upvote">&#8250;</button></td>
+        <td><button class="upvote" data-id=<%="#{post.id}"%>>&#8250;</button></td>
         <td><%= post.upvote %></td>
-
 
         <td><%= link_to 'Mostrar', post %></td>
         <td><%= link_to 'Excluir', post, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
@@ -27,20 +26,65 @@
 
 <%= link_to 'New Post', new_post_path %>
 
-  <script>
+<script>
+$(document).ready(function() {
 
-  $(document).ready(function() {
+  $(".upvote").click(function( event ) {
 
-    document.getElementById("upvote").addEventListener("click", function( event ) {
+    var id = (this.dataset['id']);
+    const data = {upvote: '+1'};
 
-      fetch('http://localhost:3000/posts/1')
-        .then(function(response){
-          return response.json();
-        })
-        .then(function(upvote){
-          console.log(upvote.upvote);
-        });
+
+//POST request with body equal on data in JSON format
+fetch('http://localhost:3000/votes/'+id+'.json', {
+  method: 'put',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+.then((response) => response.json())
+//Then with the data from the response in JSON...
+.then((data) => {
+  console.log('Success:', data);
+})
+//Then with the error genereted...
+.catch((error) => {
+  console.error('Error:', error);
+});
+
+//																		Yeah
     });
-  });
 
-  </script>
+
+  $(".downvote").click(function( event ) {
+
+    var id = (this.dataset['id']);
+
+    var id = (this.dataset['id']);
+    const data = {downvote: '-1'};
+
+
+//POST request with body equal on data in JSON format
+fetch('http://localhost:3000/votes/'+id+'.json', {
+  method: 'put',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+.then((response) => response.json())
+//Then with the data from the response in JSON...
+.then((data) => {
+  console.log('Success:', data);
+})
+//Then with the error genereted...
+.catch((error) => {
+  console.error('Error:', error);
+});
+
+//																		Yeah
+    });
+});
+
+</script>

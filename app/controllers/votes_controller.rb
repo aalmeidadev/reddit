@@ -2,11 +2,14 @@ class VotesController < ApplicationController
   before_action :set_posts, only: [:update]
 
     def update
-      if params[:upvote] == 1
+      if params[:upvote].present?
         @posts.increment(:upvote)
-      elsif params[:downvote] == 1
-        @posts.increment(:downvote)
+        @posts.save
+      elsif params[:downvote].present?
+        @posts.decrement(:downvote)
+        @posts.save
       end
+      render json: @posts
     end
 
 
