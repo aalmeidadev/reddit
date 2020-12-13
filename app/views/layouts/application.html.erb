@@ -11,10 +11,17 @@
 
   <body>
 
-    <% if user_signed_in?%>
+  <div align="right">
+      <% if user_signed_in?%>
 
       Usuario:  <%=current_user.email%>
     <%end%>
+    <% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+  </li>
+<% end %>
+  </div>
     <%= yield %>
   </body>
 </html>
