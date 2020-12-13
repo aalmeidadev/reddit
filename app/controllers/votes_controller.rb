@@ -5,11 +5,12 @@ class VotesController < ApplicationController
       if params[:upvote].present?
         @posts.increment(:upvote)
         @posts.save
+      render json: @posts
       elsif params[:downvote].present?
         @posts.decrement(:downvote)
         @posts.save
-      end
       render json: @posts
+      end
     end
 
 

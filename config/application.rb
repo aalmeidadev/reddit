@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Reddit
   class Application < Rails::Application
+    config.autoload_paths += %W( #{config.root}/app/controllers/votes_controller)
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 

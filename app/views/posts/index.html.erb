@@ -1,27 +1,27 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Posts</h1>
-
+<div class="content">
 <table>
   <thead>
   </thead>
 
   <tbody>
+
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.downvote %></td>
-        <td><button class="downvote" data-id=<%="#{post.id}"%>>&#8249;</button></td>
-        <td><%= post.contents %></td>
-        <td><button class="upvote" data-id=<%="#{post.id}"%>>&#8250;</button></td>
-        <td><%= post.upvote %></td>
+        <br>
 
-        <td><%= link_to 'Mostrar', post %></td>
+        <td><button class="downvote" data-id=<%="#{post.id}"%>><%=post.downvote%></button></td>
+        <td><hr size="30"></td>
+        <td><font face="arial" size="3"><%= post.contents %></font></td>
+        <td><hr size="30"></td>
+        <td><button class="upvote" data-id=<%="#{post.id}"%>><%=post.upvote%></button></td>
         <td><%= link_to 'Excluir', post, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
+
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
+<div align="center"><%= link_to 'Nova notícia', new_post_path %></div>

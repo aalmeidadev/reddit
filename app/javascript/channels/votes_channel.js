@@ -2,6 +2,9 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create("VotesChannel", {
   connected() {
+
+    console.log("conexão estabelecida");
+
     // Called when the subscription is ready for use on the server
   },
 

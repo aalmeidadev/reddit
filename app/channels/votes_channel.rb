@@ -1,7 +1,6 @@
 class VotesChannel < ApplicationCable::Channel
   def subscribed
-    post = Post.find(params[:id])
-     stream_for post
+    stream_for 'votes_channel'
   end
 
   def unsubscribed
