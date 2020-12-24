@@ -12,7 +12,7 @@ $(document).ready(function() {
 fetch('http://localhost:3000/votes/'+id+'.json', {
   method: 'put',
   headers: {
-    'Content-Type': 'application/json', 
+    'Content-Type': 'application/json',
   },
   body: JSON.stringify(data),
 })
@@ -31,8 +31,6 @@ fetch('http://localhost:3000/votes/'+id+'.json', {
 
 
   $(".downvote").click(function( event ) {
-
-    var id = (this.dataset['id']);
 
     var id = (this.dataset['id']);
     const data = {downvote: '-1'};

@@ -19,4 +19,8 @@ class VotesController < ApplicationController
     def set_posts
       @posts = Post.find(params[:id])
     end
-  end
+
+    def broadcast(votes)
+      VotesChannel.broadcast_to votes, @Posts
+    end
+end
