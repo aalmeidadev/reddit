@@ -1,24 +1,10 @@
-# README
+## Principal tecnologia usada
+- Ruby on rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---------------------------------------------------------------
+# Tarefa para aprender action cable para usar uma chamada ao banco de dados "mão dupla"
 
-Things you may want to cover:
+- Foi criado botões para que seja atualizado pontos automaticamente após o clique. (Não precisando reiniciar a página)
+- Feito um CRUD simples e adicionado botões para executar tarefa.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### Use: rails server. 
